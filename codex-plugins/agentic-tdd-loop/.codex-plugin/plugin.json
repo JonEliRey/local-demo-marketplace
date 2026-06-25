@@ -1,0 +1,38 @@
+{
+  "name": "agentic-tdd-loop",
+  "version": "0.1.0",
+  "description": "team-ready composite skill for RED/GREEN TDD, agent routing, adversarial review, and simplification gates.",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "team",
+    "tdd",
+    "agentic-development",
+    "review",
+    "marketplace",
+    "reference"
+  ],
+  "interface": {
+    "displayName": "the adopting organization Agentic TDD Loop",
+    "shortDescription": "team-ready composite skill for RED/GREEN TDD, agent routing, adversarial review, and simplification gates.",
+    "longDescription": "team-ready composite skill for RED/GREEN TDD, agent routing, adversarial review, and simplification gates.",
+    "category": "development",
+    "developerName": "Jonathan Reyes / Ethion"
+  },
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonEliRey/agent-runtime-aggregator"
+  },
+  "x-canonical-components": {
+    "skills": [
+      "agentic-tdd-loop"
+    ],
+    "commands": [
+      "run-agentic-tdd-loop"
+    ]
+  },
+  "commands": "./commands/",
+  "skills": "./skills/"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ai-enablement-intake",
+  "description": "team-ready Claude Code skill for evaluating and packaging curated agent/runtime assets.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "team",
+    "agent-runtime",
+    "marketplace",
+    "reference"
+  ],
+  "skills": [
+    "./skills/agent-marketplace-intake"
+  ]
+}

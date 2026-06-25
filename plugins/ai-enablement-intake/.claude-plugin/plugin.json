@@ -1,0 +1,12 @@
+{
+  "name": "ai-enablement-intake",
+  "displayName": "the adopting organization AI Enablement",
+  "version": "0.1.0",
+  "description": "reference implementation Claude Code plugin with an team-ready intake skill for curated agent/runtime marketplace work.",
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "license": "MIT",
+  "keywords": ["team", "agent-runtime", "enablement", "marketplace", "reference"]
+}

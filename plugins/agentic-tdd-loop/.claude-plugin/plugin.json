@@ -1,0 +1,18 @@
+{
+  "name": "agentic-tdd-loop",
+  "displayName": "the adopting organization Agentic TDD Loop",
+  "version": "0.1.0",
+  "description": "team-ready composite skill for RED/GREEN TDD, agent routing, adversarial review, and simplification gates.",
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "license": "MIT-derived local workflow composite",
+  "keywords": [
+    "team",
+    "tdd",
+    "agentic-development",
+    "adversarial-review",
+    "simplification"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "anthropic-internal-comms-mirror",
+  "description": "Locked-ref mirror of Anthropic's public internal-comms skill for marketplace mechanics validation.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "anthropic",
+    "internal-comms",
+    "mirror",
+    "marketplace",
+    "reference"
+  ],
+  "x-runtime-components": {
+    "skills": "skills/"
+  }
+}

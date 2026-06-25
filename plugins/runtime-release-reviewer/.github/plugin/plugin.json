@@ -1,0 +1,20 @@
+{
+  "name": "runtime-release-reviewer",
+  "description": "team-ready test agent component for reviewing generated runtime marketplace releases across harnesses.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "team",
+    "agent-runtime",
+    "release-review",
+    "marketplace",
+    "reference"
+  ],
+  "agents": [
+    "./agents/runtime-release-reviewer.agent.md"
+  ]
+}

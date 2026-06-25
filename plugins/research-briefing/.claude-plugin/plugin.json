@@ -1,0 +1,18 @@
+{
+  "name": "research-briefing",
+  "displayName": "the adopting organization Research Briefing",
+  "version": "0.1.0",
+  "description": "team-ready skill adapted from Anthropic internal-comms patterns for repeatable research and enablement briefings.",
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "license": "Apache-2.0-derived upstream pattern plus local reference implementation content",
+  "keywords": [
+    "team",
+    "briefing",
+    "research",
+    "internal-comms",
+    "reference"
+  ]
+}

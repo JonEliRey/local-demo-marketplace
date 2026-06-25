@@ -1,0 +1,15 @@
+manifest_version: 1
+name: agent-runtime-marketplace
+version: 0.1.0
+kind: skill-pack
+description: reference implementation marketplace for curated team-ready agent/runtime
+  enablement assets.
+exports:
+  skills:
+  - agent-marketplace-intake
+  - agentic-tdd-loop
+  - internal-comms
+  - research-briefing
+  - routed-research-briefing
+after_install: Enable this plugin to load the generated skill-pack exports. Add the
+  repository as a Hermes skill tap when you want the tap discovery path specifically.

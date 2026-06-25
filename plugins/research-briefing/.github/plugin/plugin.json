@@ -1,0 +1,20 @@
+{
+  "name": "research-briefing",
+  "description": "team-ready Claude Code skill adapted from Anthropic internal-comms patterns for repeatable research and enablement briefings.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "team",
+    "research",
+    "briefing",
+    "marketplace",
+    "reference"
+  ],
+  "skills": [
+    "./skills/research-briefing"
+  ]
+}

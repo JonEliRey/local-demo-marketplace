@@ -1,0 +1,25 @@
+{
+  "name": "agent-runtime-marketplace",
+  "interface": {
+    "displayName": "Agent Runtime Marketplace",
+    "description": "reference implementation marketplace for curated team-ready agent/runtime enablement assets."
+  },
+  "plugins": [
+    {
+      "name": "agentic-tdd-loop",
+      "source": {
+        "source": "local",
+        "path": "./codex-plugins/agentic-tdd-loop"
+      },
+      "description": "team-ready composite skill for RED/GREEN TDD, agent routing, adversarial review, and simplification gates.",
+      "category": "development",
+      "interface": {
+        "displayName": "the adopting organization Agentic TDD Loop"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "name": "agent-runtime-marketplace",
+  "owner": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "metadata": {
+    "description": "reference implementation marketplace for curated team-ready agent/runtime enablement assets.",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "ai-enablement-intake",
+      "displayName": "the adopting organization AI Enablement",
+      "source": "./plugins/ai-enablement-intake",
+      "description": "team-ready Claude Code skill for evaluating and packaging curated agent/runtime assets.",
+      "version": "0.1.0",
+      "category": "enablement",
+      "tags": [
+        "team",
+        "agent-runtime",
+        "marketplace",
+        "reference"
+      ]
+    },
+    {
+      "name": "research-briefing",
+      "displayName": "the adopting organization Research Briefing",
+      "source": "./plugins/research-briefing",
+      "description": "team-ready Claude Code skill adapted from Anthropic internal-comms patterns for repeatable research and enablement briefings.",
+      "version": "0.1.0",
+      "category": "enablement",
+      "tags": [
+        "team",
+        "research",
+        "briefing",
+        "marketplace",
+        "reference"
+      ]
+    },
+    {
+      "name": "routed-research-briefing",
+      "displayName": "the adopting organization Routed Research Briefing",
+      "source": "./plugins/routed-research-briefing",
+      "description": "team-ready research briefing skill with asset-scoped model-routing policy metadata.",
+      "version": "0.1.0",
+      "category": "enablement",
+      "tags": [
+        "team",
+        "research",
+        "briefing",
+        "model-routing",
+        "marketplace",
+        "reference"
+      ]
+    },
+    {
+      "name": "agentic-tdd-loop",
+      "displayName": "the adopting organization Agentic TDD Loop",
+      "source": "./plugins/agentic-tdd-loop",
+      "description": "team-ready composite skill for RED/GREEN TDD, agent routing, adversarial review, and simplification gates.",
+      "version": "0.1.0",
+      "category": "development",
+      "tags": [
+        "team",
+        "tdd",
+        "agentic-development",
+        "review",
+        "marketplace",
+        "reference"
+      ]
+    },
+    {
+      "name": "anthropic-internal-comms-mirror",
+      "displayName": "Anthropic Internal Comms Mirror",
+      "source": "./plugins/anthropic-internal-comms-mirror",
+      "description": "Locked-ref mirror of Anthropic's public internal-comms skill for marketplace mechanics validation.",
+      "version": "0.1.0",
+      "category": "reference",
+      "tags": [
+        "anthropic",
+        "internal-comms",
+        "mirror",
+        "marketplace",
+        "reference"
+      ]
+    },
+    {
+      "name": "runtime-release-reviewer",
+      "displayName": "the adopting organization Runtime Release Reviewer",
+      "source": "./plugins/runtime-release-reviewer",
+      "description": "team-ready test agent component for reviewing generated runtime marketplace releases across harnesses.",
+      "version": "0.1.0",
+      "category": "review",
+      "tags": [
+        "team",
+        "agent-runtime",
+        "release-review",
+        "marketplace",
+        "reference"
+      ]
+    }
+  ]
+}

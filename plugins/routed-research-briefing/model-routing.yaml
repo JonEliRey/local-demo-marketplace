@@ -1,0 +1,25 @@
+scope: asset
+no_global_provider_changes: true
+policy_version: 0.1.0
+purpose: team-ready placeholder model-routing policy for research briefing output Z.
+lanes:
+  lower_requirement_research:
+    default_model: google/gemini-3.5-flash
+    surface: approved-cost-conscious-research-lane
+    use_for:
+      - source collection
+      - first-pass summaries
+      - low-risk briefing drafts
+    escalation_trigger: ambiguity, policy consequence, weak source evidence, or failed verification
+  high_judgment_escalation:
+    default_model: anthropic/claude-sonnet-4-6
+    surface: approved-senior-review-lane
+    use_for:
+      - architecture judgment
+      - final recommendation review
+      - sensitive policy interpretation
+      - disagreement resolution
+boundaries:
+  - This policy is metadata/guidance for generated asset Z only.
+  - It does not change global provider settings, billing, secrets, or user environments.
+  - Replace placeholder model names with approved enterprise routes before rollout.
