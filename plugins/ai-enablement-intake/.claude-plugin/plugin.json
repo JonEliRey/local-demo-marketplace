@@ -6,7 +6,13 @@
   "author": {
     "name": "Jonathan Reyes / Ethion"
   },
-  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "repository": "https://github.com/JonEliRey/local-demo-marketplace",
   "license": "MIT",
-  "keywords": ["team", "agent-runtime", "enablement", "marketplace", "reference"]
+  "keywords": [
+    "team",
+    "agent-runtime",
+    "enablement",
+    "marketplace",
+    "reference"
+  ]
 }

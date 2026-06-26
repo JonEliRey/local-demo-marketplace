@@ -356,6 +356,13 @@ def audit_exported_target(root: Path, registry_error: str) -> list[str]:
             errors.append(f"codex marketplace source path drift for exported plugin: {name}")
             continue
         codex_root = root / expected_path.removeprefix("./")
+        claude_manifest_path = root / "plugins" / name / ".claude-plugin" / "plugin.json"
+        claude_manifest, claude_manifest_error = load_json(claude_manifest_path, "claude plugin manifest")
+        if claude_manifest_error:
+            errors.append(claude_manifest_error)
+        elif claude_manifest is not None and claude_manifest.get("repository") != "https://github.com/JonEliRey/local-demo-marketplace":
+            errors.append(f"claude plugin manifest repository must point at target distribution repository for {name}")
+
         manifest, manifest_error = load_json(codex_root / ".codex-plugin" / "plugin.json", "codex plugin manifest")
         if manifest_error:
             errors.append(manifest_error)

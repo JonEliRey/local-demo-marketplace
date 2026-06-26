@@ -6,7 +6,7 @@
   "author": {
     "name": "Anthropic / mirrored by Ethion"
   },
-  "repository": "https://github.com/JonEliRey/agent-runtime-aggregator",
+  "repository": "https://github.com/JonEliRey/local-demo-marketplace",
   "license": "Apache-2.0 upstream skill mirror",
   "keywords": [
     "anthropic",

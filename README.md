@@ -2,7 +2,7 @@
 
 Agent Runtime Aggregator is a consumable marketplace-style repository for agent/runtime assets. It exposes the same curated assets through native package shapes used by multiple harnesses: Claude Code plugins, Antigravity (AGY) plugins, Hermes skills/plugins, and GitHub/Copilot repository assets.
 
-The source of truth is the registry plus committed recipes, patches, overlays, and locked upstream sources. Runtime-specific files are adapter outputs from that source of truth, not separate doctrines and not separate repositories per consuming agent.
+In the generator repository, the source of truth is the registry plus committed recipes, patches, overlays, and locked upstream sources. In this exported distribution repository, runtime-specific files are adapter outputs from that source of truth, not separate doctrines and not separate repositories per consuming agent.
 
 The repository is intended to be cloned or added as a marketplace source by humans and agents that need reusable agent skills, commands, and agent components.
 
@@ -64,7 +64,7 @@ Note: direct skill install and plugin-manager install are the supported Hermes c
 
 ```bash
 codex plugin marketplace add https://github.com/JonEliRey/local-demo-marketplace
-codex plugin list --marketplace agent-runtime-marketplace --available
+codex plugin list --marketplace agent-runtime-marketplace
 codex plugin add agentic-tdd-loop@agent-runtime-marketplace
 codex plugin list
 ```
