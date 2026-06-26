@@ -1,7 +1,7 @@
 {
   "target_id": "local-demo-marketplace",
   "source_repository": "agent-runtime-aggregator",
-  "source_commit": "f2e7bdf04eadfdc305e9eba0aadb962f3c5aba36",
+  "source_commit": "c28e0e2c7a3856d9d2ddc6709c1d8139ccdc56c5",
   "copied_files": [
     ".agents/plugins/marketplace.json",
     ".claude-plugin/marketplace.json",
