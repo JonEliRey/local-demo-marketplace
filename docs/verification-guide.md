@@ -22,9 +22,10 @@ Run these only in the generator repository, where `registry.yaml`, `scripts/`, a
 | `python3 scripts/cli_uat.py --require-claude` | Same as above plus `claude plugin validate` for marketplace root and generated Claude plugins. | Yes | Yes |
 | `python3 scripts/target.py export --target local-demo-marketplace` | Copies allowlisted generated runtime outputs into an ignored target checkout under `.targets/`. | Yes: writes the target checkout only. | No |
 | `python3 scripts/target.py check --target local-demo-marketplace` | Confirms the target export record is internally consistent and forbidden paths are absent. | No | No |
+| `mkdir -p dist && cd vscode-extension && npx --yes @vscode/vsce package --out ../dist/local-demo-marketplace.vsix` | Packages the generated VS Code wrapper as an installable VSIX. | Yes: writes `dist/`. | No |
 | `python3 scripts/check_marketplace.py` | In the generator repo only, full deterministic local/CI gate: unit tests, compileall, build, audit, CLI UAT, optional Claude validation skip, whitespace check, generated-output diff check. | Yes | No; skips Claude validation if missing. |
 | `python3 scripts/check_marketplace.py --require-claude` | Generator repo only, full gate plus required Claude plugin validation. | Yes | Yes |
-| `git diff --exit-code -- .claude-plugin .github/agents .github/instructions plugins companion-tools/marketplace-audit` | Generated committed runtime outputs are in sync after build/UAT. | No | No |
+| `git diff --exit-code -- .claude-plugin .agents .github/agents .github/instructions .github/plugin plugins skills agy-plugins codex-plugins hermes-plugins vscode-extension companion-tools/marketplace-audit` | Generated committed runtime outputs are in sync after build/UAT. | No | No |
 
 ## Recommended local gate
 
@@ -41,7 +42,7 @@ In the generator repository, `tests/test_marketplace_process.py` is the executab
 - Registry includes all implemented strategies: `patch`, `sidecar`, `combine`, `overlay`, `model-routing-policy`, `generated-composite`, `mirror`, `companion-tool`.
 - Every asset has governance fields (`id`, `type`, `target`, `adaptation_strategy`, `expose`).
 - CI/check gate invokes build, audit, UAT, diff, and Claude validation hooks.
-- Build creates expected Copilot, Claude plugin, companion CLI, marketplace, and provenance outputs.
+- Build creates expected Copilot, Claude plugin, VS Code extension wrapper, companion CLI, marketplace, and provenance outputs.
 - Provenance records strategy/source refs/outputs.
 - The Claude marketplace includes current plugins: `ai-enablement-intake`, `research-briefing`, `routed-research-briefing`, `agentic-tdd-loop`, `anthropic-internal-comms-mirror`, `runtime-release-reviewer`.
 - Sidecar output preserves upstream base bytes and emits separate policy.
@@ -50,6 +51,6 @@ In the generator repository, `tests/test_marketplace_process.py` is the executab
 
 ## Interpretation notes
 
-- Passing CLI/CI gates does **not** prove VS Code/Copilot UI recognition; that needs workstation UAT.
+- Passing CLI/CI gates proves VSIX packaging, but command-palette install UAT still requires a workstation with the `code` CLI.
 - Passing Claude validation proves plugin manifests are structurally accepted by Claude CLI, not that end users have installed or used them.
 - Generated provenance contains timestamps; regenerate immediately before audits.

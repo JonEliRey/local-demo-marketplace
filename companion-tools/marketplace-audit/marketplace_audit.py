@@ -293,6 +293,68 @@ def audit_canonical_graph_mappings(root: Path, registry: dict[str, Any]) -> list
     return errors
 
 
+def audit_vscode_extension(root: Path, registry: dict[str, Any] | None = None) -> list[str]:
+    errors: list[str] = []
+    extension_root = root / "vscode-extension"
+    package, package_error = load_json(extension_root / "package.json", "VS Code extension package manifest")
+    if package_error:
+        return [package_error]
+    assert package is not None
+    if package.get("name") != "local-demo-marketplace":
+        errors.append("VS Code extension package name must be local-demo-marketplace")
+    if package.get("publisher") != "jonelirey":
+        errors.append("VS Code extension package publisher must be jonelirey")
+    if package.get("main") != "./src/extension.js":
+        errors.append("VS Code extension main must be ./src/extension.js")
+    activation_events = package.get("activationEvents")
+    if not isinstance(activation_events, list) or "onCommand:local-demo-marketplace.diagnostics" not in activation_events:
+        errors.append("VS Code extension must activate diagnostics command")
+    contributes = package.get("contributes")
+    commands = contributes.get("commands") if isinstance(contributes, dict) else None
+    command_ids = {item.get("command") for item in commands if isinstance(item, dict)} if isinstance(commands, list) else set()
+    if "local-demo-marketplace.diagnostics" not in command_ids:
+        errors.append("VS Code extension missing diagnostics command contribution")
+    if "local-demo-marketplace.openBundledCatalog" not in command_ids:
+        errors.append("VS Code extension missing open catalog command contribution")
+    for required in (
+        "src/extension.js",
+        "assets/marketplace/VERSION.json",
+        "assets/marketplace/.github/agents/technical-writer.agent.md",
+        "assets/marketplace/.github/instructions/ai-adoption.instructions.md",
+        "assets/marketplace/catalog/index.md",
+    ):
+        candidate = extension_root / required
+        if not is_within_root(candidate, root):
+            errors.append(f"VS Code extension required path escapes repo: {required}")
+        elif not candidate.exists():
+            errors.append(f"VS Code extension missing required file: {required}")
+    files = package.get("files")
+    if not isinstance(files, list) or not files:
+        errors.append("VS Code extension package files must be a non-empty list")
+    else:
+        for file_path in files:
+            if not isinstance(file_path, str):
+                errors.append(f"VS Code extension package file entry is not a string: {file_path}")
+                continue
+            candidate = extension_root / file_path
+            if not is_within_root(candidate, root):
+                errors.append(f"VS Code extension package file escapes repo: {file_path}")
+            elif not candidate.exists():
+                errors.append(f"VS Code extension package file missing: {file_path}")
+    if registry is not None:
+        wrapper_asset = next((asset for asset in registry.get("assets", []) if isinstance(asset, dict) and asset.get("id") == "vscode-extension-wrapper"), None)
+        if wrapper_asset is None:
+            errors.append("registry missing vscode-extension-wrapper asset")
+        else:
+            for output_file in wrapper_asset.get("output", {}).get("files", []):
+                candidate = extension_root / output_file
+                if not is_within_root(candidate, root):
+                    errors.append(f"VS Code extension registry output escapes repo: {output_file}")
+                elif not candidate.exists():
+                    errors.append(f"VS Code extension registry output missing: {output_file}")
+    return errors
+
+
 def audit_exported_target(root: Path, registry_error: str) -> list[str]:
     errors: list[str] = []
     export_record, export_error = load_json(root / ".agent-runtime-export.json", "target export record")
@@ -320,6 +382,8 @@ def audit_exported_target(root: Path, registry_error: str) -> list[str]:
             errors.append("README references scripts/check_marketplace.py but target export does not include that script")
         if "JonEliRey/agent-runtime-aggregator" in readme:
             errors.append("README references generator repository instead of target distribution repository")
+
+    errors.extend(audit_vscode_extension(root))
 
     claude_marketplace, claude_error = load_json(root / ".claude-plugin" / "marketplace.json", "claude marketplace manifest")
     codex_marketplace, codex_error = load_json(root / ".agents" / "plugins" / "marketplace.json", "codex marketplace manifest")
@@ -416,6 +480,7 @@ def audit(root: Path) -> list[str]:
         errors.append("marketplace plugin list does not match registry plugin metadata")
     errors.extend(audit_github_copilot_plugin_marketplace(root, registry))
     errors.extend(audit_canonical_graph_mappings(root, registry))
+    errors.extend(audit_vscode_extension(root, registry))
 
     for asset in assets:
         if not isinstance(asset, dict):

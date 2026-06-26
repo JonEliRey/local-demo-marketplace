@@ -1,0 +1,50 @@
+{
+  "name": "local-demo-marketplace",
+  "displayName": "Local Demo Marketplace",
+  "description": "Installable VS Code wrapper for the generated agent/runtime marketplace assets.",
+  "version": "0.1.0",
+  "publisher": "jonelirey",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "agents",
+    "copilot",
+    "marketplace",
+    "skills"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonEliRey/local-demo-marketplace"
+  },
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onCommand:local-demo-marketplace.diagnostics",
+    "onCommand:local-demo-marketplace.openBundledCatalog"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "local-demo-marketplace.diagnostics",
+        "title": "Local Demo Marketplace: Diagnostics"
+      },
+      {
+        "command": "local-demo-marketplace.openBundledCatalog",
+        "title": "Local Demo Marketplace: Open Bundled Catalog"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "npx --yes @vscode/vsce package"
+  },
+  "files": [
+    "src",
+    "assets",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ]
+}

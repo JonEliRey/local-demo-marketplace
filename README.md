@@ -14,6 +14,7 @@ The repository is intended to be cloned or added as a marketplace source by huma
 | Antigravity / AGY | Plugin packages with co-located components | `agy-plugins/` |
 | Hermes | Direct skill install surface and Hermes plugin package | `skills/`, `hermes-plugins/` |
 | GitHub Copilot / VS Code | Repository custom agents and instructions | `.github/agents/`, `.github/instructions/` |
+| VS Code extension | Installable VSIX wrapper with bundled marketplace assets | `vscode-extension/` |
 | Operators / maintainers | Catalog and verification commands | `catalog/index.md`, `docs/verification-guide.md` |
 
 ## Quick install
@@ -79,6 +80,16 @@ Clone or open the repository in a supported Copilot/VS Code client and use the r
 .github/agents/
 .github/instructions/
 ```
+
+### VS Code extension wrapper
+
+```bash
+cd vscode-extension
+npx --yes @vscode/vsce package --out /tmp/local-demo-marketplace.vsix
+code --install-extension /tmp/local-demo-marketplace.vsix
+```
+
+After install, run `Local Demo Marketplace: Diagnostics` from the command palette. Publishing to VS Code Marketplace remains approval-gated.
 
 ## Browse available assets
 

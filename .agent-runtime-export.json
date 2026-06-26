@@ -1,7 +1,7 @@
 {
   "target_id": "local-demo-marketplace",
   "source_repository": "agent-runtime-aggregator",
-  "source_commit": "c28e0e2c7a3856d9d2ddc6709c1d8139ccdc56c5",
+  "source_commit": "2064bdc0e99a82ccf11f73a31e49d66db5ca465e",
   "copied_files": [
     ".agents/plugins/marketplace.json",
     ".claude-plugin/marketplace.json",
@@ -107,7 +107,18 @@
     "skills/research-briefing/.generated-by-agent-runtime-aggregator",
     "skills/research-briefing/SKILL.md",
     "skills/routed-research-briefing/.generated-by-agent-runtime-aggregator",
-    "skills/routed-research-briefing/SKILL.md"
+    "skills/routed-research-briefing/SKILL.md",
+    "vscode-extension/CHANGELOG.md",
+    "vscode-extension/LICENSE",
+    "vscode-extension/README.md",
+    "vscode-extension/assets/marketplace/.github/agents/sidecar-technical-writer.agent.md",
+    "vscode-extension/assets/marketplace/.github/agents/technical-writer.agent.md",
+    "vscode-extension/assets/marketplace/.github/instructions/ai-adoption.instructions.md",
+    "vscode-extension/assets/marketplace/.github/instructions/sidecar-technical-writer-policy.instructions.md",
+    "vscode-extension/assets/marketplace/VERSION.json",
+    "vscode-extension/assets/marketplace/catalog/index.md",
+    "vscode-extension/package.json",
+    "vscode-extension/src/extension.js"
   ],
   "approval_gates": [
     "create-remote",

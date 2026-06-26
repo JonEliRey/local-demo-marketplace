@@ -23,6 +23,7 @@ python3 companion-tools/marketplace-audit/marketplace_audit.py --root .
 | AGY / Antigravity | Plugin packages with co-located components | `agy-plugins/` | `agy plugin validate agy-plugins/agentic-tdd-loop` |
 | Hermes | Direct skill pack and plugin package | `skills/`, `hermes-plugins/` | `hermes plugins install <repo>#hermes-plugins/agent-runtime-marketplace --no-enable` |
 | GitHub Copilot / VS Code | Repository custom agents and instructions | `.github/agents/`, `.github/instructions/` | Open the repository in a supported Copilot / VS Code client. UI recognition still requires workstation UAT. |
+| VS Code extension | Installable wrapper with bundled marketplace assets and diagnostics command | `vscode-extension/` | `npx --yes @vscode/vsce package --out /tmp/local-demo-marketplace.vsix`; install with VS Code CLI where available. |
 | Companion audit | Self-verification CLI | `companion-tools/marketplace-audit/marketplace_audit.py` | `python3 companion-tools/marketplace-audit/marketplace_audit.py --root .` |
 
 ## Exported asset coverage
@@ -31,6 +32,7 @@ python3 companion-tools/marketplace-audit/marketplace_audit.py --root .
 |---|---|
 | `technical-writer-agent` | GitHub/Copilot repository agent and instruction |
 | `sidecar-technical-writer-agent` | GitHub/Copilot repository agent and sidecar policy instruction |
+| `vscode-extension-wrapper` | VS Code VSIX wrapper bundling generated agents, instructions, catalog, and diagnostics command |
 | `ai-enablement-intake-skill` | Claude plugin, Codex plugin, AGY plugin, Hermes skill/plugin surfaces |
 | `research-briefing-skill` | Claude plugin, Codex plugin, AGY plugin, Hermes skill/plugin surfaces |
 | `routed-research-briefing-skill` | Claude plugin, Codex plugin, AGY plugin, Hermes skill/plugin surfaces |
@@ -47,6 +49,6 @@ Use `docs/verification-guide.md` for the split between distribution checks and g
 
 ## Known remaining gaps
 
-- VS Code/Copilot client-side UI recognition UAT is not recorded.
+- VS Code desktop install/command-palette UAT requires a workstation with the `code` CLI; generator CI packages the VSIX wrapper.
 - Hook/MCP asset packaging is not implemented.
 - Optional build refactor may be useful if asset count/strategy complexity increases.
