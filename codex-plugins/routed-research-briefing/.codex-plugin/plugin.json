@@ -1,0 +1,29 @@
+{
+  "name": "routed-research-briefing",
+  "version": "0.1.0",
+  "description": "team-ready research briefing skill with asset-scoped model-routing policy metadata.",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "team",
+    "research",
+    "briefing",
+    "model-routing",
+    "marketplace",
+    "reference"
+  ],
+  "interface": {
+    "displayName": "the adopting organization Routed Research Briefing",
+    "shortDescription": "team-ready research briefing skill with asset-scoped model-routing policy metadata.",
+    "longDescription": "team-ready research briefing skill with asset-scoped model-routing policy metadata.",
+    "category": "enablement",
+    "developerName": "Jonathan Reyes / Ethion"
+  },
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonEliRey/local-demo-marketplace"
+  },
+  "skills": "./skills/"
+}

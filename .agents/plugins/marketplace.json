@@ -6,6 +6,54 @@
   },
   "plugins": [
     {
+      "name": "ai-enablement-intake",
+      "source": {
+        "source": "local",
+        "path": "./codex-plugins/ai-enablement-intake"
+      },
+      "description": "team-ready Claude Code skill for evaluating and packaging curated agent/runtime assets.",
+      "category": "enablement",
+      "interface": {
+        "displayName": "the adopting organization AI Enablement"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      }
+    },
+    {
+      "name": "research-briefing",
+      "source": {
+        "source": "local",
+        "path": "./codex-plugins/research-briefing"
+      },
+      "description": "team-ready Claude Code skill adapted from Anthropic internal-comms patterns for repeatable research and enablement briefings.",
+      "category": "enablement",
+      "interface": {
+        "displayName": "the adopting organization Research Briefing"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      }
+    },
+    {
+      "name": "routed-research-briefing",
+      "source": {
+        "source": "local",
+        "path": "./codex-plugins/routed-research-briefing"
+      },
+      "description": "team-ready research briefing skill with asset-scoped model-routing policy metadata.",
+      "category": "enablement",
+      "interface": {
+        "displayName": "the adopting organization Routed Research Briefing"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      }
+    },
+    {
       "name": "agentic-tdd-loop",
       "source": {
         "source": "local",
@@ -15,6 +63,38 @@
       "category": "development",
       "interface": {
         "displayName": "the adopting organization Agentic TDD Loop"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      }
+    },
+    {
+      "name": "anthropic-internal-comms-mirror",
+      "source": {
+        "source": "local",
+        "path": "./codex-plugins/anthropic-internal-comms-mirror"
+      },
+      "description": "Locked-ref mirror of Anthropic's public internal-comms skill for marketplace mechanics validation.",
+      "category": "reference",
+      "interface": {
+        "displayName": "Anthropic Internal Comms Mirror"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      }
+    },
+    {
+      "name": "runtime-release-reviewer",
+      "source": {
+        "source": "local",
+        "path": "./codex-plugins/runtime-release-reviewer"
+      },
+      "description": "team-ready test agent component for reviewing generated runtime marketplace releases across harnesses.",
+      "category": "review",
+      "interface": {
+        "displayName": "the adopting organization Runtime Release Reviewer"
       },
       "policy": {
         "installation": "AVAILABLE",

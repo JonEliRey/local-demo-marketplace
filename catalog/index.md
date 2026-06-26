@@ -7,7 +7,7 @@ Status: reference implementation catalog. Source of truth: `registry.yaml`. Buil
 Claude Code plugin marketplace, after this repo is available from GitHub:
 
 ```text
-claude plugin marketplace add JonEliRey/agent-runtime-aggregator --scope local
+claude plugin marketplace add JonEliRey/local-demo-marketplace --scope local
 claude plugin install <plugin-name>@agent-runtime-marketplace --scope local
 claude plugin list
 ```
@@ -17,7 +17,7 @@ VS Code / Copilot: clone/open this repository and confirm `.github/agents/` and 
 Codex CLI marketplace, after build output is present:
 
 ```text
-codex plugin marketplace add <repo-path-or-owner/repo>
+codex plugin marketplace add https://github.com/JonEliRey/local-demo-marketplace
 codex plugin list --marketplace agent-runtime-marketplace --available
 codex plugin add agentic-tdd-loop@agent-runtime-marketplace
 ```
@@ -44,3 +44,14 @@ Defined in `registry.yaml` `expose.plugin` entries and generated into `.claude-p
 - `routed-research-briefing`
 - `agentic-tdd-loop`
 - `anthropic-internal-comms-mirror`
+
+## Current Codex plugins
+
+Defined in `.agents/plugins/marketplace.json` and generated under `codex-plugins/`:
+
+- `ai-enablement-intake`
+- `research-briefing`
+- `routed-research-briefing`
+- `agentic-tdd-loop`
+- `anthropic-internal-comms-mirror`
+- `runtime-release-reviewer`

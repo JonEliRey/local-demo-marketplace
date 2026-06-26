@@ -1,0 +1,28 @@
+{
+  "name": "anthropic-internal-comms-mirror",
+  "version": "0.1.0",
+  "description": "Locked-ref mirror of Anthropic's public internal-comms skill for marketplace mechanics validation.",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "anthropic",
+    "internal-comms",
+    "mirror",
+    "marketplace",
+    "reference"
+  ],
+  "interface": {
+    "displayName": "Anthropic Internal Comms Mirror",
+    "shortDescription": "Locked-ref mirror of Anthropic's public internal-comms skill for marketplace mechanics validation.",
+    "longDescription": "Locked-ref mirror of Anthropic's public internal-comms skill for marketplace mechanics validation.",
+    "category": "reference",
+    "developerName": "Jonathan Reyes / Ethion"
+  },
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonEliRey/local-demo-marketplace"
+  },
+  "skills": "./skills/"
+}

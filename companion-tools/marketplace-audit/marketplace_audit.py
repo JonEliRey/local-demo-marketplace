@@ -293,11 +293,90 @@ def audit_canonical_graph_mappings(root: Path, registry: dict[str, Any]) -> list
     return errors
 
 
+def audit_exported_target(root: Path, registry_error: str) -> list[str]:
+    errors: list[str] = []
+    export_record, export_error = load_json(root / ".agent-runtime-export.json", "target export record")
+    if export_error:
+        return [registry_error, export_error]
+    assert export_record is not None
+    if export_record.get("target_id") != "local-demo-marketplace":
+        errors.append("target export record target_id mismatch")
+
+    agents_path = root / "AGENTS.md"
+    claude_path = root / "CLAUDE.md"
+    if agents_path.exists() and not claude_path.exists():
+        errors.append("CLAUDE.md bridge missing for AGENTS.md")
+    elif claude_path.exists() and claude_path.read_text().strip() != "@AGENTS.md":
+        errors.append("CLAUDE.md must delegate to AGENTS.md with @AGENTS.md")
+
+    readme_path = root / "README.md"
+    if readme_path.exists():
+        readme = readme_path.read_text()
+        if (
+            "python3 scripts/check_marketplace.py" in readme
+            and "Maintainer-only generator checks" not in readme
+            and not (root / "scripts" / "check_marketplace.py").exists()
+        ):
+            errors.append("README references scripts/check_marketplace.py but target export does not include that script")
+        if "JonEliRey/agent-runtime-aggregator" in readme:
+            errors.append("README references generator repository instead of target distribution repository")
+
+    claude_marketplace, claude_error = load_json(root / ".claude-plugin" / "marketplace.json", "claude marketplace manifest")
+    codex_marketplace, codex_error = load_json(root / ".agents" / "plugins" / "marketplace.json", "codex marketplace manifest")
+    if claude_error:
+        errors.append(claude_error)
+    if codex_error:
+        errors.append(codex_error)
+    if claude_marketplace is None or codex_marketplace is None:
+        return errors
+
+    claude_plugins = claude_marketplace.get("plugins")
+    codex_plugins = codex_marketplace.get("plugins")
+    if not isinstance(claude_plugins, list):
+        errors.append("claude marketplace plugins must be a list")
+        claude_plugins = []
+    if not isinstance(codex_plugins, list):
+        errors.append("codex marketplace plugins must be a list")
+        codex_plugins = []
+    codex_by_name = {plugin.get("name"): plugin for plugin in codex_plugins if isinstance(plugin, dict)}
+    for plugin in claude_plugins:
+        if not isinstance(plugin, dict):
+            continue
+        name = plugin.get("name")
+        if not isinstance(name, str):
+            errors.append(f"claude plugin missing name: {plugin}")
+            continue
+        codex_entry = codex_by_name.get(name)
+        if codex_entry is None:
+            errors.append(f"codex marketplace missing plugin entry for exported plugin: {name}")
+            continue
+        source = codex_entry.get("source")
+        expected_path = f"./codex-plugins/{name}"
+        if not isinstance(source, dict) or source.get("path") != expected_path:
+            errors.append(f"codex marketplace source path drift for exported plugin: {name}")
+            continue
+        codex_root = root / expected_path.removeprefix("./")
+        manifest, manifest_error = load_json(codex_root / ".codex-plugin" / "plugin.json", "codex plugin manifest")
+        if manifest_error:
+            errors.append(manifest_error)
+            continue
+        assert manifest is not None
+        if manifest.get("name") != name:
+            errors.append(f"codex plugin manifest name mismatch for {name}")
+        component_fields = ("skills", "commands", "agents")
+        if not any((codex_root / field).exists() for field in component_fields):
+            errors.append(f"codex plugin has no exported components for {name}")
+        for field in component_fields:
+            if (codex_root / field).exists() and manifest.get(field) != f"./{field}/":
+                errors.append(f"codex plugin manifest does not expose {field} for {name}")
+    return errors
+
+
 def audit(root: Path) -> list[str]:
     errors: list[str] = []
     registry, registry_error = load_yaml(root / "registry.yaml")
     if registry_error:
-        return [registry_error]
+        return audit_exported_target(root, registry_error)
     assert registry is not None
 
     marketplace_path = root / ".claude-plugin" / "marketplace.json"

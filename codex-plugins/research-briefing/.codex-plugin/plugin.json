@@ -1,0 +1,28 @@
+{
+  "name": "research-briefing",
+  "version": "0.1.0",
+  "description": "team-ready Claude Code skill adapted from Anthropic internal-comms patterns for repeatable research and enablement briefings.",
+  "license": "Review upstream licenses and provenance before redistribution",
+  "keywords": [
+    "team",
+    "research",
+    "briefing",
+    "marketplace",
+    "reference"
+  ],
+  "interface": {
+    "displayName": "the adopting organization Research Briefing",
+    "shortDescription": "team-ready Claude Code skill adapted from Anthropic internal-comms patterns for repeatable research and enablement brief",
+    "longDescription": "team-ready Claude Code skill adapted from Anthropic internal-comms patterns for repeatable research and enablement briefings.",
+    "category": "enablement",
+    "developerName": "Jonathan Reyes / Ethion"
+  },
+  "author": {
+    "name": "Jonathan Reyes / Ethion"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonEliRey/local-demo-marketplace"
+  },
+  "skills": "./skills/"
+}

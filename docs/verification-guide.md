@@ -13,18 +13,19 @@ Use these commands from repo root. Commands are executable backlinks to the impl
 | `python3 scripts/cli_uat.py --require-claude` | Same as above plus `claude plugin validate` for marketplace root and generated Claude plugins. | Yes | Yes |
 | `python3 scripts/target.py export --target local-demo-marketplace` | Copies allowlisted generated runtime outputs into an ignored target checkout under `.targets/`. | Yes: writes the target checkout only. | No |
 | `python3 scripts/target.py check --target local-demo-marketplace` | Confirms the target export record is internally consistent and forbidden paths are absent. | No | No |
-| `python3 scripts/check_marketplace.py` | Full deterministic local/CI gate: unit tests, compileall, build, audit, CLI UAT, optional Claude validation skip, whitespace check, generated-output diff check. | Yes | No; skips Claude validation if missing. |
-| `python3 scripts/check_marketplace.py --require-claude` | Full gate plus required Claude plugin validation. | Yes | Yes |
+| `python3 companion-tools/marketplace-audit/marketplace_audit.py --root .` | In a generated distribution repo, validates the export record, marketplace manifests, Codex package index, and target-facing docs without requiring generator-only `registry.yaml`. | No | No |
+| `python3 scripts/check_marketplace.py` | In the generator repo only, full deterministic local/CI gate: unit tests, compileall, build, audit, CLI UAT, optional Claude validation skip, whitespace check, generated-output diff check. | Yes | No; skips Claude validation if missing. |
+| `python3 scripts/check_marketplace.py --require-claude` | Generator repo only, full gate plus required Claude plugin validation. | Yes | Yes |
 | `git diff --check` | No whitespace errors in working-tree diff. | No | No |
 | `git diff --exit-code -- .claude-plugin .github/agents .github/instructions plugins companion-tools/marketplace-audit` | Generated committed runtime outputs are in sync after build/UAT. | No | No |
 
 ## Recommended local gate
 
 ```bash
-python3 scripts/check_marketplace.py
+python3 companion-tools/marketplace-audit/marketplace_audit.py --root .
 ```
 
-Use `--require-claude` only where the Claude CLI is installed and authenticated enough to run `claude plugin validate`.
+Use `python3 scripts/check_marketplace.py` only in the generator repository. Use `--require-claude` only where the Claude CLI is installed and authenticated enough to run `claude plugin validate`.
 
 ## What the tests prove
 

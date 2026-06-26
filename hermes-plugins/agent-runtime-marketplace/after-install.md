@@ -5,5 +5,5 @@ This Hermes plugin package exposes the generated marketplace skills as a Hermes-
 Enable the plugin after install to load plugin exports. To test the separate Hermes tap path, add the repository as a tap:
 
 ```bash
-hermes skills tap add JonEliRey/agent-runtime-aggregator
+hermes skills tap add JonEliRey/local-demo-marketplace
 ```
